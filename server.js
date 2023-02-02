@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser');
 const messageRouter = require('./src/api/controllers/BotController')
+const { bots, setConection} = require('./src/botManager')
 
 
 dotenv.config()
@@ -17,6 +18,6 @@ app.use('/message',messageRouter)
 
 
 app.listen(port, async ()=>{
-    bots.set(client, await setConection('Efs'))
+    bots.set("Efs", await setConection('Efs'))
     console.log(`Listening on http://localhost:${port}`)
 })
