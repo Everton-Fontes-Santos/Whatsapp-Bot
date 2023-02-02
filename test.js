@@ -39,7 +39,7 @@ const itemModel = async()=>{
 const start = async () => {
 
     const res = await axios.post(
-        'http://localhost:3000/message/connect',
+        'https://whatsapp-bot-otrg.onrender.com/message/connect',
         {client:"Efs"}
     )
     return res.data
@@ -60,12 +60,12 @@ const postMessage = async () =>{
             body: JSON.stringify(update),
         };
         const response = await fetch(
-            'http://localhost:3000/message/send',
+            'https://whatsapp-bot-otrg.onrender.com/message/send',
             options
         )
         console.log(await response.json())
     },5000)
     
 }
-
-postMessage()
+start()
+// postMessage()

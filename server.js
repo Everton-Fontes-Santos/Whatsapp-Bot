@@ -16,7 +16,7 @@ app.use('/message',messageRouter)
 
 
 
-
-app.listen(port, ()=>{
+app.listen(port, async ()=>{
+    bots.set(client, await setConection('Efs'))
     console.log(`Listening on http://localhost:${port}`)
 })

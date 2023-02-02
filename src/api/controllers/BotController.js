@@ -2,24 +2,6 @@ const express = require('express')
 const { bots, setConection} = require('../../botManager')
 const botControllerRouter = express.Router()
 
-botControllerRouter.post('/connect', async (req, res)=>{
-    const data = req.body
-    const client = data?.client
-    try{
-        if(!client) return res.status(500).json({
-            message:"Need a client"
-        })
-
-        bots.set(client, await setConection(client))
-        return res.status(201).json({
-            message:`Created a client ${client}`
-        })    
-    }catch(err){
-        console.log(err)
-    }
-    
-})
-
 botControllerRouter.post("/send", async (req, res)=>{
     const body = req.body
     if(!body.remoteJid || !body.message) return res.status(500).json({
